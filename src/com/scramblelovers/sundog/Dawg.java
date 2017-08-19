@@ -7,7 +7,7 @@ import java.util.*;
 // typically store it in a file.
 // Look at DawgSerializer to re-create the serialized Dawg object, so it can be read
 // in case of a dictionary change, for example
-public class Dawg implements Dawgable, Serializable {
+public class Dawg implements Serializable {
     private static final long serialVersionUID = 5057641363471882621L;
     
     Node[][] pruneList = new Node[450000][2];
@@ -53,7 +53,7 @@ public class Dawg implements Dawgable, Serializable {
         pruneList = null;
     }
 
-    public Nodable getNodeAfterPrefix(String prefix) {
+    public Node getNodeAfterPrefix(String prefix) {
         //System.out.println("dawg.gnap:" + prefix);
         prefix = prefix.toLowerCase();
         Node tn = nRoot;

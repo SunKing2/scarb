@@ -1,7 +1,5 @@
 package com.scramblelovers.sundog;
 
-import i10n.Msg;
-
 import java.util.Set;
 import java.util.TreeSet;
 import java.io.IOException;

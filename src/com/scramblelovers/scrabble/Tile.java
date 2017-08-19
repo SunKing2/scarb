@@ -31,18 +31,6 @@ public class Tile implements Comparable<Tile> {
     public int getPoints() { return points; }
     public int getRow() { return row; }
     public int getColumn() { return column; }
-    // TODO fix the Board.asLetters() bug that made this stupid method necessary, and remove this method
-    public void makeReallyABlank() { 
-        this.faceValueChar = ' ';
-        this.points = 0;
-        // TODO this might break the computer's stuff, i added this line feb 15:
-        this.intendedValueChar = 'e';
-    }
-    // added 20110511 as part of updating board with blank when play and rack contain blank
-    public void makeABlank() { 
-        this.faceValueChar = ' ';
-        this.points = 0;
-    }
 
     @Override
     public int compareTo(Tile o) {

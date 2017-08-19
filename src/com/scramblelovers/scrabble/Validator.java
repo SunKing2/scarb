@@ -1,5 +1,4 @@
 package com.scramblelovers.scrabble;
-import i10n.Msg;
 
 /**
  * <code>Validator</code> ensures legal plays in play position and words in dictionary:
@@ -14,9 +13,6 @@ public class Validator {
         throw new AssertionError();
     }
     
-    private static final int START_SQUARE_ROW = Globals.TILES_HIGH/2;
-    private static final int START_SQUARE_COLUMN = Globals.TILES_WIDE/2;
-
     public static boolean validPositionAndWords(Play play, Board board, Dictionary dict, boolean checkCrossPlays, boolean cleanUpPlay) {
         boolean bReturn = false;
         
@@ -48,18 +44,7 @@ public class Validator {
         }
         return bReturn;
     }
-    //FIXME this may report true even if some of the crossplays are invalid
-    public static boolean validPositionAndWords(Play play, Board board, Dictionary dict)  {
-        boolean bReturn = false;
-        try {
-            Validator.validPosition(play, board, false, true);
-            Validator.validWords(play, board, dict);
-            bReturn = true;
-        }
-        catch (Exception exc) { } // yup ignore, coz it can only return true with no exceptions
-        return bReturn;
-    }
-    
+
     /**
      * Validates a <code>Play</code> 
      */
@@ -67,10 +52,12 @@ public class Validator {
             boolean checkUsedStartSquare, boolean checkOverwriting) 
             throws Exception {
 
-        // ensure start square is occupied
+        // TODO ensure start square is occupied
+    	/*
         if (checkUsedStartSquare && !board.contains(START_SQUARE_COLUMN, START_SQUARE_ROW,  play)) {
             throwMsg("startSquare");
         }
+        */
         
         // ensure that at least one of the placed tiles are touching
         // an existing tile on the board

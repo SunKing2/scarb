@@ -1,4 +1,4 @@
-package com.scramblelovers.io;
+package com.scramblelovers.scrabble;
 
 import java.util.*;
 import java.io.*;

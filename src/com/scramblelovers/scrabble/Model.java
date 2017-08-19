@@ -2,8 +2,8 @@ package com.scramblelovers.scrabble;
 
 public interface Model {
 
-    public void setStartupParameters(StartupParameters startupParameters);
-    public StartupParameters getStartupParameters();
+    //public void setStartupParameters(StartupParameters startupParameters);
+    //public StartupParameters getStartupParameters();
     
     public Dictionary getDictionary();
     public Board getBoard();
@@ -12,9 +12,9 @@ public interface Model {
     public boolean isEmpty();
     public Rack getRack(int playerNumber);
     public String getRackAsString(int playerNumber);
-    public void setPlayer(int playerNumber, PlayerModel player);
-    public PlayerModel getPlayer(int playerNumber);
+    //public void setPlayer(int playerNumber, PlayerModel player);
+    //public PlayerModel getPlayer(int playerNumber);
     public TileBag getLetterBag();
-    public void setScores(Scores scores);
-    public Scores getScores();
+    public void setScores(Scoresable scores);
+    public Scoresable getScores();
 }

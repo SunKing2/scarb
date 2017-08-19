@@ -3,7 +3,7 @@ import java.io.*;
 import java.util.Set;
 import java.util.TreeSet;
 
-import com.scramblelovers.io.IOStuff;
+import com.scramblelovers.scrabble.IOStuff;
 
 public class DawgSerializer {
     public static void main(String[] args) throws IOException {

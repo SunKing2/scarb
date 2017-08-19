@@ -40,60 +40,9 @@ public class Rack {
             }
         }
         return bReturn;
-    }  
-    public boolean removeAllandFill(TileBag bag, Collection<Tile> tilesUsed) {
-        boolean bRemoved, bFilled;
-        bRemoved = removeAll(tilesUsed);
-        bFilled = fillRack(bag);
-        return bRemoved && bFilled;
     }
-    public boolean removeAll(Collection<Tile> tilesUsed) {
-        boolean bReturn = true;
-        // all this to ensure tiles are on rack
-        for (Tile tile: tilesUsed) {
-            boolean x = this.remove(tile);
-            if (x == false) {
-                x = this.removeBlank();
-                if (x == false) {
-                    bReturn = false;
-                    System.out.println("Rack.removeAll: I can't remove tile:" + tile);
-                }
-            }
-        }
-        return bReturn;
-    }
-    
-    public boolean fillRack(TileBag bag) {
-        boolean completelyFilled = true;
-
-        int amountInBag = bag.getSize();
-        int amountToAdd = Globals.RACK_SIZE - tiles.size();
-        if (amountInBag < amountToAdd) {
-            completelyFilled = false;
-            amountToAdd = amountInBag;
-        }
-        for (int i = 0; i < amountToAdd; i++) {
-            Tile ll = bag.extractTile();
-            if (ll.getFaceValueChar() == ' ')
-                ll.setIntendedValueChar('e');
-            tiles.add(ll);
-        }
-        return completelyFilled;
-    }
-    public boolean change(TileBag bag) {
-        boolean bReturn = false;
-        if (bag.getSize() >= Globals.RACK_SIZE) {
-            for (int i = 0; i < Globals.RACK_SIZE; i++)
-                tiles.add(bag.extractTile());
-            for (int i = 0; i < Globals.RACK_SIZE; i++) {
-                bag.returnTile((Tile) tiles.get(0));
-                tiles.remove(0);
-            }
-            bReturn = true;
-        } 
-        return bReturn;
-    }
-    // sorts rack and returns it as a String
+ 
+   // sorts rack and returns it as a String
     public String toString() {
         String sReturn = "";
         // TODO this has side effect of permanently sorting rack

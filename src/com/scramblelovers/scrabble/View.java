@@ -1,7 +1,4 @@
-package views;
-
-import com.scramblelovers.scrabble.Scores;
-import com.scramblelovers.scrabble.StartupParameters;
+package com.scramblelovers.scrabble;
 
 /**
  * A View acts as the client layer.
@@ -18,12 +15,12 @@ import com.scramblelovers.scrabble.StartupParameters;
 public interface View {
 
     public void setTitle(String title);
-    public StartupParameters getStartupParameters();
+    //public StartupParameters getStartupParameters();
     public void updateBoard(char[][] board);
     
     public void updateRack(int playerNumber, String letters);
     public void updateScore(int playerNumber, int score);
-    public void showFinish(int playerNumber, Scores scores);
+    public void showFinish(int playerNumber, Scoresable scores);
     public void showMessage(int playerNumber, String message, boolean undoPlay);
     public void setPlayEnabled(int playerNumber, boolean playEnabled);
 

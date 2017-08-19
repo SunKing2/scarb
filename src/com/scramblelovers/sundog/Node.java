@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.*;
 
 
-public class Node implements Nodable, Serializable {
+public class Node implements Serializable {
     private static final long serialVersionUID = 942436792401292679L;
 
     public char letter;

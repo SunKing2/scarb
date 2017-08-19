@@ -12,12 +12,6 @@ public class Row {
     private List<Square> anchors = new ArrayList<Square>();
     private int row = 0;
     
-    // create a row of blank tiles
-    public Row(int row, int count) {
-        this.row = row;
-        rowSquares = Row.makeSquares(count);
-    }
-    
     // create a row using an existing board and a row #
     public Row(Board board, Dictionary dict, int row) {
         this.row = row;
@@ -79,44 +73,6 @@ public class Row {
         square.setCrossCheckLetters(crossCheckLetters);
     }
     
-    // get the square at column
-    public Square get(int column) {
-        return rowSquares.get(column);
-    }
-    public List<Square> getSquares() {
-        return rowSquares;
-    }
-    public List<Square> getAnchors() {
-        return anchors;
-    }
-    
-    public void setCrossCheckLetters(int column, String letters) {
-        rowSquares.get(column).setCrossCheckLetters(letters);
-    }
-    public void setLetter(int column, char letter) {
-        rowSquares.get(column).setLetter(letter);
-    }
-    public void addAnchor(int column) {
-        Square sq = rowSquares.get(column);
-        sq.setAnchor(true);
-        //System.out.println("row.addAnchor:" + column);
-        anchors.add(sq);
-    }
-    
-    public static List<Square> makeSquares(int count) {
-        List<Square> col = new ArrayList<Square>();
-        Square square;
-        Square previous = null;
-        char blank = (char)0;
-        for (int i = 0; i < count; i++) {
-            square = new Square(blank, previous);
-            square.setColumn(i);
-            previous = square;
-            col.add(square);
-        }
-        return col;
-    }
-
     public void spew(DawgStuff bot, Dawg dawg, String rack, boolean setLimits) {
         if (setLimits) determineAndSetLimitsForRow();
         Node rootNode = dawg.getRootNode();
@@ -148,15 +104,5 @@ public class Row {
                 follow.setLimit(0);
             }
         }
-        // delete this
-        //System.out.println("Row.daslfr\n" + toString());
-    }
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (Square square: rowSquares) {
-            sb.append(square.toString());
-            sb.append('\n');
-        }
-        return sb.toString();
     }
 }

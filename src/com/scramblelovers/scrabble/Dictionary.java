@@ -1,6 +1,5 @@
 package com.scramblelovers.scrabble;
 import java.util.*;
-import com.scramblelovers.io.IOStuff;
 
 public class Dictionary {
     Set<String> dictionary;

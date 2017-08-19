@@ -1,16 +1,14 @@
-package demo;
+package com.scramblelovers.scrabble;
 
 import java.util.*;
-import com.scramblelovers.scrabble.*;
-import com.scramblelovers.scrabble.Dictionary;
 import com.scramblelovers.types.StringStuff;
 
 public class ScrabbleDemo {
     
     //  302 seconds to do this simulation until it finds a word repeating  21 times
     // 1214 seconds to do this simulation until it finds a word repeating 100 times
-    private static final int minOutput = 12;
-    private static final int stopOnFirst = 10000; // stop condition for # times repeating
+    private static final int minOutput = 2;
+    private static final int stopOnFirst = 4; // stop condition for # times repeating
     private static final boolean showBoard = false;
     private static final boolean showWordsDuring = false;
     private static final boolean bShowTooSmall = showWordsDuring;
@@ -18,8 +16,6 @@ public class ScrabbleDemo {
     private Board board;
     private Dictionary dict;
     private Bot bot;
-    private Stack<Integer> score100;
-    
     public ScrabbleDemo(Board board, Dictionary dict) {
         this.board = board;
         this.dict = dict;
@@ -35,7 +31,7 @@ public class ScrabbleDemo {
         int score = 0;
         int average = 0;
         
-        score100 = new Stack<Integer>();
+        new Stack<Integer>();
         while (score != -1 && nCompletedGames < maxGames) {
             try {
                 score = playOneGame(false);
@@ -48,27 +44,8 @@ public class ScrabbleDemo {
                 nCompletedGames++;
                 accumulatedPoints += score;
                 average =  accumulatedPoints/nCompletedGames;
-                // TODO this is really removing any verbosity:
-                if (showGameOver) {
-                    System.out.println("Game over. Score: " + score + 
-                    " games:" + nCompletedGames + " avg:" + average);
-                }
                 if (showBoard) System.out.println(board);
-                if (nCompletedGames % 100 == 0) {
-                    System.out.println("                               adding to stack:" + average);
-                    score100.add(average);
-                    int sumOfDifferences = 0;
-                    int size = score100.size();
-                    if (size > 7) {
-                        int compareTo = score100.elementAt(size - 7);
-                        for (int i = 0; i < 4; i++) {
-                            int iStack = score100.elementAt(size - i - 1);
-                            System.out.println("stack " + i + ". " + iStack + " vs. " + compareTo);
-                            sumOfDifferences += Math.abs(iStack - compareTo);
-                        }
-                        if (sumOfDifferences < 6 && stopOnConsistentAverageScore) return;
-                    }
-                }
+
             }
         }
         System.out.println("Played this many games:" + maxGames);
@@ -78,36 +55,7 @@ public class ScrabbleDemo {
         showWordsResults();
         
     }
-    // this demo is applicable for ScrabblerBot which relies on leaves that are in Global.java
-    // I think this plays x many games for each leave set in the Global file, and compares results
-    public void demoTryingLeaves() {
-        for (int i =  0; i < Globals.leaves.length; i++) {
-            long iStartTime = System.currentTimeMillis();
-            int nCompletedGames = 0;
-            int accumulatedPoints = 0;
-            int score = 0;
-            int gamesPerLeave = 4500;
-            // here's where I change the leave values:
-            Globals.lv = Globals.leaves[i];
 
-            while (nCompletedGames < gamesPerLeave && score != -1) {
-                try {
-                    score = playOneGame(false);
-                } 
-                catch (Exception e) {
-                    continue;  // TODO do I really wanna continue or to just ignore the error?
-                }
-                if (score != -1) {
-                    nCompletedGames++;
-                    accumulatedPoints += score;
-                }
-            }
-            System.out.println("!!!!! Results for round:" + i);
-            System.out.println("Round:" + i + " over  games:" + nCompletedGames + " avg:" + accumulatedPoints/nCompletedGames);
-            if (showBoard) System.out.println(board);
-            showElapsedTime(iStartTime);
-        }
-    }   // plays a game until an error occurs, or bag is sorta emptyish
     public int playOneGame(boolean sameGame) throws Exception {
         board = new Board(0);
         TileBag bag = new TileBag(sameGame);

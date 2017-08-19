@@ -1,5 +1,4 @@
 package com.scramblelovers.scrabble;
-import views.View;
 
 public interface Controller {
     public void setModel(Model model);

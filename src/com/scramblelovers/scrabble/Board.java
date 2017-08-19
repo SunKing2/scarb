@@ -1,7 +1,5 @@
 package com.scramblelovers.scrabble;
 import java.util.*;
-
-import com.scramblelovers.types.StringStuff;
 public class Board {
 
     private BoardSquare[][] squares;
@@ -90,24 +88,6 @@ public class Board {
         }
         return colTiles;
     }
-    // used in test cases, might be useful elsewhere so I put it in this class
-    public String getLettersRemainingAfterPlay(String rack, Play play) {
-        String lettersUsedInPlay = new Rack(asLetters(play)).toString();
-        String lettersRemainingAfterPlay = StringStuff.subtractWord(rack, lettersUsedInPlay);
-        int iExpectedRemaining = rack.length() - lettersUsedInPlay.length();
-        int iActualRemaining = lettersRemainingAfterPlay.length();
-        //System.out.println("Board.getLettersRemainingAfterPlay exp:" + iExpectedRemaining + " actual:" + iActualRemaining); 
-        int iBlanks = iActualRemaining - iExpectedRemaining;
-        char blankChar = '?';
-        if (lettersRemainingAfterPlay.indexOf(' ') >=0) {
-            blankChar = ' ';
-        }
-        for (int i = 0; i < iBlanks; i++) {
-            System.out.println("Board.getLettersRemainingAfterPlay deleting a '" + blankChar + "'");
-            lettersRemainingAfterPlay = StringStuff.subtractLetter(lettersRemainingAfterPlay, blankChar);
-        }
-        return lettersRemainingAfterPlay;
-    }
 
     /**
      * Get all <code>Play</code> and secondary Play objects that were made by
@@ -176,51 +156,6 @@ public class Board {
         return play;
     }    
     
-    /**
-     * Tests if the play contains a tile placed on the row, column; (to see if Start square used)
-     * @param row the row being checked
-     * @param column the column being checked
-     * @return boolean: this play has at least one tile placed on the specified row and column
-     */
-    public boolean contains(int row, int column, Play play) {
-        boolean bReturn = false;
-        for (Tile let: asLetters(play)) {
-            if (let.getRow() == row && let.getColumn() == column) {
-                bReturn = true;
-                break;
-            }
-        }
-        return bReturn;
-    }
-    public void spewBoard() {
-        System.out.println(toString());
-    }
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (int r = 0; r < rows; r++) {
-            for (int c = 0; c < columns; c++) {
-                sb.append(squares[r][c].toString());
-            }
-            sb.append('\n');
-        }
-        return sb.toString();
-    }
-    /* this is used to send a simplified version to computer player */
-    public char[][] getBoardAsLetters() {
-
-        char[][] c = new char[rows][columns];
-        for (int i = 0; i < rows; i++ ) {
-            for (int j = 0; j < columns; j++) {
-                BoardSquare square = squares[i][j];
-                char ch = 0;
-                if (square != null && square.getTile() != null) {
-                    ch = squares[i][j].getTile().getFaceValueChar();
-                }
-                c[i][j] = ch;
-            }
-        }
-        return c;
-    }
     private void setTile(int row, int column, Tile tile) {
         squares[row][column].setTile(tile);
     }
