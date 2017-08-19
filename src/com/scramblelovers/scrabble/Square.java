@@ -1,4 +1,4 @@
-package com.scramblelovers.types;
+package com.scramblelovers.scrabble;
 
 public class Square {
     private char letter = 0;

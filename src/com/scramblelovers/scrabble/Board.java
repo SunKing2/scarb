@@ -117,10 +117,8 @@ public class Board {
         // for each letter in (this) Play
         for(int i = 0; i < iWordLen; i++) {
             char ch = word.charAt(i);
-            //System.out.println("checkin" + ch);
             if (!squares[ir][ic].isOccupied() && squares[ir][ic].hasOccupiedInlineAdjacentSquare(!bHor)) {
                 Play p = getInlinePlayTo(ir, ic, !bHor, "" + ch);
-                //System.out.println("adding:" + p);
                 plays.add(p);
             }
             ir += dr;  ic += dc;
@@ -159,15 +157,12 @@ public class Board {
     private void setTile(int row, int column, Tile tile) {
         squares[row][column].setTile(tile);
     }
-    public int getBoardType() { return boardType; }
     public boolean isOccupied(int row, int column) { return this.squares[row][column].isOccupied(); }
     public Tile getTileAt(int row, int column) { return squares[row][column].getTile(); }
     public int getLetterMultiplier(int row, int column) { return squares[row][column].getLetterMultiplier(); }
     public int getWordMultiplier(int row, int column) { return squares[row][column].getWordMultiplier(); }
     public boolean hasOccupiedAjacentSquare(int row, int column) { return squares[row][column].hasOccupiedAdjacentSquare(); }
     public boolean hasOccupiedInlineAdjacentSquare(int row, int column, boolean horizontal) { return squares[row][column].hasOccupiedInlineAdjacentSquare(horizontal); }
-    public char getTypeAt(int row, int column) { return squares[row][column].getType(); }
-
     public char getCharAt(int row, int column) {
         char ch = (char)0;
         if (row < 0 || row >= Globals.TILES_WIDE || column < 0 || column >= Globals.TILES_HIGH) {
@@ -199,9 +194,5 @@ public class Board {
         transposedBoard = bt;
         recalculateTransposedBoard = false;
         return bt;
-    }
-    public Board clone() {
-        // cleverly lazy and sloppy
-        return this.transpose().transpose();
     }
 }

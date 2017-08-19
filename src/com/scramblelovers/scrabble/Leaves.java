@@ -2,8 +2,6 @@ package com.scramblelovers.scrabble;
 import java.util.Collection;
 import java.util.Map;
 
-import com.scramblelovers.types.StringStuff;
-
 public class Leaves {
     
     private static Leaves singleton;

@@ -1,14 +1,13 @@
 package com.scramblelovers.scrabble;
 
 import java.util.*;
-import com.scramblelovers.types.StringStuff;
 
 public class ScrabbleDemo {
     
     //  302 seconds to do this simulation until it finds a word repeating  21 times
     // 1214 seconds to do this simulation until it finds a word repeating 100 times
-    private static final int minOutput = 2;
-    private static final int stopOnFirst = 4; // stop condition for # times repeating
+    private static final int minOutput = 8;
+    private static final int stopOnFirst = 21; // stop condition for # times repeating
     private static final boolean showBoard = false;
     private static final boolean showWordsDuring = false;
     private static final boolean bShowTooSmall = showWordsDuring;
@@ -111,14 +110,8 @@ public class ScrabbleDemo {
             }
             // game over
         }
-        catch (ArrayIndexOutOfBoundsException exc) {
-            System.out.println("oh shit, i'm outa here:" + exc);
-            exc.printStackTrace();
-            throw new RuntimeException(exc);
-        }
         catch (Exception exc) {
-            // TODO this really kills any verbosity
-            //exc.printStackTrace();
+            System.out.println("Exception throwing ScrabbleDemo.playGame:" + exc);
             throw (exc);
         }
         return score;

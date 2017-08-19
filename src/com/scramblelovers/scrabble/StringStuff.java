@@ -1,4 +1,4 @@
-package com.scramblelovers.types;
+package com.scramblelovers.scrabble;
 import java.util.*;
 
 public class StringStuff {

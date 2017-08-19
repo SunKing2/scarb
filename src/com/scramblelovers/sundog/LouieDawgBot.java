@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.HashSet;
 
 import com.scramblelovers.scrabble.*;
-import com.scramblelovers.types.*;
 
 public class LouieDawgBot implements Bot {
     

@@ -1,8 +1,6 @@
-package com.scramblelovers.types;
+package com.scramblelovers.scrabble;
 import java.util.*;
 
-import com.scramblelovers.scrabble.*;
-import com.scramblelovers.scrabble.Dictionary;
 import com.scramblelovers.sundog.Dawg;
 import com.scramblelovers.sundog.DawgStuff;
 import com.scramblelovers.sundog.Node;

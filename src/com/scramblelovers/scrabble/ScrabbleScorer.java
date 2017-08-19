@@ -1,7 +1,5 @@
 package com.scramblelovers.scrabble;
 
-import com.scramblelovers.types.StringStuff;
-
 public class ScrabbleScorer {
 
     private ScrabbleScorer() { } // prevent creating instance

@@ -2,7 +2,6 @@ package com.scramblelovers.sundog;
 import java.util.*;
 
 import com.scramblelovers.scrabble.*;
-import com.scramblelovers.types.*;
 
 public class DawgStuff {
     private Set<Play> legalPlays = new HashSet<Play>();
