@@ -33,7 +33,8 @@ public class ScrabbleDemoTest {
         long iStartTime;
         
         // warmup
-        demo.demo(2, false, false);
+        demo.playOneGame(true);
+        demo.playOneGame(true);
         
         // warmup
         iStartTime = System.currentTimeMillis();

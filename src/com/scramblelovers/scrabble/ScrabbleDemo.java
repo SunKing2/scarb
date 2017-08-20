@@ -7,7 +7,7 @@ public class ScrabbleDemo {
     //  302 seconds to do this simulation until it finds a word repeating  21 times
     // 1214 seconds to do this simulation until it finds a word repeating 100 times
     private static final int minOutput = 25; //50;
-    private static final int stopOnFirst = 8037; //2400; // stop condition for # times repeating
+    private static final int stopOnFirst = 18000; // 8037; //2400; // stop condition for # times repeating
     private static final boolean showBoard = false;
     private static final boolean showWordsDuring = false;
     private static final boolean bShowTooSmall = showWordsDuring;
@@ -20,9 +20,8 @@ public class ScrabbleDemo {
         this.dict = dict;
         bot = Globals.bot;
     }
-    public final void demo(int maxGames, boolean stopOnConsistentAverageScore, boolean showGameOver) {
+    public final void demo(boolean stopOnConsistentAverageScore, boolean showGameOver) {
 
-        System.out.println("Playing this many games:" + maxGames);
 
         long iStartTime = System.currentTimeMillis();
         int nCompletedGames = 0;
@@ -31,7 +30,7 @@ public class ScrabbleDemo {
         int average = 0;
         
         new Stack<Integer>();
-        while (score != -1 && nCompletedGames < maxGames) {
+        while (score != -1) {
             try {
                 score = playOneGame(false);
             } 
@@ -47,7 +46,6 @@ public class ScrabbleDemo {
 
             }
         }
-        System.out.println("Played this many games:" + maxGames);
         System.out.println("Game over. Score: " + score + 
                 " games:" + nCompletedGames + " avg:" + average);
         showElapsedTime(iStartTime);
@@ -178,11 +176,11 @@ public class ScrabbleDemo {
 //      int numberOfGamesToPlay = 1;
 //      boolean stopOnConsistentAverageScore = false;
 //      boolean showGameOver = true;
-        int numberOfGamesToPlay = 50000;
+//        int numberOfGamesToPlay = 50000;
         boolean stopOnConsistentAverageScore = false;
         boolean showGameOver = false;
         
-        bot.demo(numberOfGamesToPlay, stopOnConsistentAverageScore, showGameOver);
+        bot.demo(stopOnConsistentAverageScore, showGameOver);
         System.out.println("All done.");
     }
     public static List<Tile> placePlay(Board board, Play play) {
