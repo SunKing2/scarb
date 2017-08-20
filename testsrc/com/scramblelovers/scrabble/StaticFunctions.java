@@ -103,11 +103,11 @@ public class StaticFunctions {
 //        System.out.println("Play ctr location:" + location);
         return getPlay(word, location);
     }	
-	public static Play placeAndRecordMoveWithLetters(Controller controller, int playerNumber, boolean horizontal, int row, int column, String word) {
+/*	public static Play placeAndRecordMoveWithLetters(Controller controller, int playerNumber, boolean horizontal, int row, int column, String word) {
 		Play play = new Play(horizontal, row, column, word);
 		controller.placeAndRecordMove(playerNumber, play, false);
 		return play;		
-	}
+	}*/
 	
 	
     // pass me an array of plays such as:
