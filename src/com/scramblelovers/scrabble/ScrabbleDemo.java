@@ -6,8 +6,8 @@ public class ScrabbleDemo {
     
     //  302 seconds to do this simulation until it finds a word repeating  21 times
     // 1214 seconds to do this simulation until it finds a word repeating 100 times
-    private static final int minOutput = 8;
-    private static final int stopOnFirst = 21; // stop condition for # times repeating
+    private static final int minOutput = 25; //50;
+    private static final int stopOnFirst = 8037; //2400; // stop condition for # times repeating
     private static final boolean showBoard = false;
     private static final boolean showWordsDuring = false;
     private static final boolean bShowTooSmall = showWordsDuring;

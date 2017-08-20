@@ -140,4 +140,19 @@ public class Play implements Comparable<Play>{
         String w2 = play2.getWord();
         return w1.compareTo(w2);
     }
+    // NSA style to describe row/col  ex 2B   or A15
+    // needed only for test cases
+	public String getLocation() {
+		String sReturn = "";
+		String sRow = "" + (this.row + 1);
+		String sColumn = "" + (char)(this.column + LOWEST_NSA_RC_LETTER);
+		sReturn = horizontal ? sRow + sColumn : sColumn + sRow;
+		return sReturn;
+	}
+
+	// return NSA description of play  (ex: retinas m9)
+	// needed only for test cases
+	public String toString() {
+	    return word + ' ' + getLocation();
+	}
 }

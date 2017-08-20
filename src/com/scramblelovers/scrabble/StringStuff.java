@@ -11,6 +11,13 @@ public class StringStuff {
         }
         return sReturn;
     }
+    public static String subtractWord(String bigWord, String smallWord) {
+		String sReturn = bigWord;
+		for (int i = 0; i < smallWord.length(); i++) {
+			sReturn = subtractLetter(sReturn, smallWord.charAt(i));
+		}
+		return sReturn;
+	}
 
     // if the letter is not found in bigword, subtract the wildcard letter and return that
     public static String subtractLetter(String bigWord, char letter, char wildcard) {

@@ -10,6 +10,13 @@ public class Row {
     private List<Square> anchors = new ArrayList<Square>();
     private int row = 0;
     
+    // create a row of blank tiles
+    // this method is needed only for test cases
+    public Row(int row, int count) {
+        this.row = row;
+        rowSquares = Row.makeSquares(count);
+    }
+    
     // create a row using an existing board and a row #
     public Row(Board board, Dictionary dict, int row) {
         this.row = row;
@@ -45,19 +52,11 @@ public class Row {
             previous = square;
             rowSquares.add(square);
         }
-        // A square can't be an anchor if its previous square is an anchor
-//        int anchorSize = anchors.size();
-//        for (int i = anchorSize - 1; i >= 0; i--) {
-//            //System.out.println("Row ctr i:" + i);
-//            Square anc = anchors.get(i);
-//            Square next = anc.getNextSquare();
-//            if (next != null && next.getColumn() == anc.getColumn() + 1) {
-//                //System.out.println("Row ctr maybe unnecessary anchor at:" + i);
-//                //anchors.remove(anc);
-//            }
-//        }
     }
 
+    public List<Square> getRowSquares() {
+    	return rowSquares;
+    }
     private void setCrossCheckLetters(Board board, Dictionary dict, int row,
             Square square, int column) {
         String crossCheckLetters = "";
@@ -103,4 +102,24 @@ public class Row {
             }
         }
     }
+    // this method is needed only for test cases, but is used
+    // by the Row(int, int) constructor which is also only for test cases
+    public static List<Square> makeSquares(int count) {
+        List<Square> col = new ArrayList<Square>();
+        Square square;
+        Square previous = null;
+        char blank = (char)0;
+        for (int i = 0; i < count; i++) {
+            square = new Square(blank, previous);
+            square.setColumn(i);
+            previous = square;
+            col.add(square);
+        }
+        return col;
+    }
+    // this method is needed only for test cases
+    public List<Square> getAnchors() {
+        return anchors;
+    }
+
 }
